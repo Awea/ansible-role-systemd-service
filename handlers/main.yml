@@ -1,6 +1,5 @@
 ---
-# handlers file for roles/systemd/service
-- name: reload systemd
-  shell: |
-    service "{{ systemd_service_name }}" restart
-  when: not ansible_unit_test
+
+- name: reload systemctl
+  shell: systemctl daemon-reload
+  when: service_file.changed
